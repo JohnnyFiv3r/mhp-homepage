@@ -22,6 +22,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../">Projects</a>
         <a href="../../neighborhoods/">Neighborhoods</a>
+        <a href="../../resources/">Resources</a>
         <a href="../../#featured">Provider Grades</a>
         <a href="#roofing-intake" class="nav-cta">Get roofing help</a>
       </nav>
@@ -31,8 +32,8 @@
         <div class="mobile-drawer" role="navigation" aria-label="Mobile navigation">
           <a href="../">Projects</a>
           <a href="../../neighborhoods/">Neighborhoods</a>
+        <a href="../../resources/">Resources</a>
           <a href="#provider-grades">Provider Grades</a>
-          <a href="../../#process">How it works</a>
           <a href="#roofing-intake" class="mobile-menu-cta">Start roofing intake</a>
         </div>
       </div>
@@ -59,6 +60,15 @@
             <p>Tell us the issue, urgency, and ZIP. Production requests will route one provider at a time with explicit consent.</p>
           </div>
           <form aria-label="Roofing request mockup">
+            <label for="roofing-timeline">Timing</label>
+            <select id="roofing-timeline">
+              <option>Urgent / active leak or damage</option>
+              <option>Soon / repair needed</option>
+              <option>Planning / comparing options</option>
+              <option>Maintenance / prevention</option>
+              <option>Upgrade / resale prep</option>
+            </select>
+
             <label for="roofing-problem">Roofing issue</label>
             <select id="roofing-problem">
               <option>Active leak or water stain</option>
@@ -68,12 +78,12 @@
               <option>Need an inspection before deciding</option>
             </select>
 
-            <label for="roofing-timeline">Timing</label>
-            <select id="roofing-timeline">
-              <option>Urgent — leak or damage now</option>
-              <option>This week</option>
-              <option>This month</option>
-              <option>Planning ahead</option>
+            <label for="roofing-stage">Project stage</label>
+            <select id="roofing-stage">
+              <option>Need help deciding next step</option>
+              <option>Ready for estimate</option>
+              <option>Comparing roofers</option>
+              <option>Documenting for insurance or resale</option>
             </select>
 
             <label for="roofing-location">ZIP or neighborhood</label>
@@ -113,6 +123,25 @@
             <h3>Not sure if it is roof, gutter, flashing, or ventilation.</h3>
             <p>The right first step may be a roof inspection — not a high-pressure replacement conversation.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guide-tag-section">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">Related guides</p>
+          <h2>Use guide tags to connect projects, resources, and local search intent.</h2>
+        </div>
+        <div class="guide-chip-list formal-tags" aria-label="Related guide tags">
+          <a class="guide-tag" data-guide-tag="local-codes" href="../../resources/#local-government-codes">Local codes</a>
+          <a class="guide-tag" data-guide-tag="storm-damage" href="../../resources/#storm-damage">Storm damage</a>
+          <a class="guide-tag" data-guide-tag="insurance" href="../../resources/#insurance-claims">Insurance basics</a>
+          <a class="guide-tag" data-guide-tag="diy" href="../../resources/#diy-troubleshooting">DIY checks</a>
+          <a class="guide-tag" data-guide-tag="landscaping" href="../../resources/#landscaping-gardening">Outdoor care</a>
+          <a class="guide-tag" data-guide-tag="roi" href="../../resources/#curb-appeal-roi">Resale ROI</a>
+          <a class="guide-tag" data-guide-tag="materials" href="../../resources/#material-comparisons">Material comparisons</a>
+          <a class="guide-tag" data-guide-tag="troubleshooting" href="../../resources/#plumbing-troubleshooting">Troubleshooting</a>
         </div>
       </div>
     </section>

@@ -21,6 +21,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../">Projects</a>
         <a href="../../neighborhoods/">Neighborhoods</a>
+        <a href="../../resources/">Resources</a>
         <a href="#provider-grades">Provider Grades</a>
         <a href="#project-intake" class="nav-cta">Start intake</a>
       </nav>
@@ -30,8 +31,8 @@
         <div class="mobile-drawer" role="navigation" aria-label="Mobile navigation">
           <a href="../../projects/">Projects</a>
           <a href="../../neighborhoods/">Neighborhoods</a>
+        <a href="../../resources/">Resources</a>
           <a href="#provider-grades">Provider Grades</a>
-          <a href="../../#process">How it works</a>
           <a href="#project-intake" class="mobile-menu-cta">Start intake</a>
         </div>
       </div>
@@ -57,19 +58,28 @@
             <p>Tell us the issue, timing, and location. Routing happens one provider at a time, with consent.</p>
           </div>
           <form aria-label="Gutters &amp; Drainage request mockup">
+            <label for="project-timeline">Timing</label>
+            <select id="project-timeline">
+              <option>Urgent / active issue</option>
+              <option>Soon / repair needed</option>
+              <option>Planning / comparing options</option>
+              <option>Maintenance / prevention</option>
+              <option>Upgrade / resale prep</option>
+            </select>
             <label for="project-problem">Project issue</label>
             <select id="project-problem">
-              <option>Urgent repair or active problem</option>
+              <option>Repair or active problem</option>
               <option>Replacement or installation planning</option>
               <option>Inspection / estimate before deciding</option>
               <option>Maintenance or prevention</option>
               <option>Not sure — help me triage it</option>
             </select>
-            <label for="project-timeline">Timing</label>
-            <select id="project-timeline">
-              <option>Urgent — this week</option>
-              <option>Soon — within 30 days</option>
-              <option>Planning / comparing options</option>
+            <label for="project-stage">Project stage</label>
+            <select id="project-stage">
+              <option>Need help deciding next step</option>
+              <option>Ready for estimate</option>
+              <option>Comparing options</option>
+              <option>Documenting for insurance or resale</option>
             </select>
             <label for="project-location">ZIP or neighborhood</label>
             <input id="project-location" placeholder="ZIP or neighborhood" />
@@ -91,6 +101,25 @@
           <article class="scenario-card"><span>Replace</span><h3>The current system or surface may be past its useful life.</h3><p>Replacement projects need clearer estimates, warranty language, and proof.</p></article>
           <article class="scenario-card"><span>Maintain</span><h3>Small maintenance can prevent higher-cost calls later.</h3><p>Maintenance pages create lower-friction entry points and future repair links.</p></article>
           <article class="scenario-card"><span>Compare</span><h3>Homeowners need decision support, not a sales pile-on.</h3><p>Provider grades and neighborhood proof help compare options without a call blast.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guide-tag-section">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">Related guides</p>
+          <h2>Use guide tags to connect projects, resources, and local search intent.</h2>
+        </div>
+        <div class="guide-chip-list formal-tags" aria-label="Related guide tags">
+          <a class="guide-tag" data-guide-tag="local-codes" href="../../resources/#local-government-codes">Local codes</a>
+          <a class="guide-tag" data-guide-tag="storm-damage" href="../../resources/#storm-damage">Storm damage</a>
+          <a class="guide-tag" data-guide-tag="insurance" href="../../resources/#insurance-claims">Insurance basics</a>
+          <a class="guide-tag" data-guide-tag="diy" href="../../resources/#diy-troubleshooting">DIY checks</a>
+          <a class="guide-tag" data-guide-tag="landscaping" href="../../resources/#landscaping-gardening">Outdoor care</a>
+          <a class="guide-tag" data-guide-tag="roi" href="../../resources/#curb-appeal-roi">Resale ROI</a>
+          <a class="guide-tag" data-guide-tag="materials" href="../../resources/#material-comparisons">Material comparisons</a>
+          <a class="guide-tag" data-guide-tag="troubleshooting" href="../../resources/#plumbing-troubleshooting">Troubleshooting</a>
         </div>
       </div>
     </section>

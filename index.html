@@ -25,6 +25,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="projects/">Projects</a>
         <a href="neighborhoods/">Neighborhoods</a>
+        <a href="resources/">Resources</a>
         <a href="#featured">Provider Grades</a>
         <a href="#request" class="nav-cta">Get matched</a>
       </nav>
@@ -34,8 +35,8 @@
         <div class="mobile-drawer" role="navigation" aria-label="Mobile navigation">
           <a href="projects/">Projects</a>
           <a href="neighborhoods/">Neighborhoods</a>
+        <a href="resources/">Resources</a>
           <a href="#featured">Provider Grades</a>
-          <a href="#process">How it works</a>
           <a href="#request" class="mobile-menu-cta">Get matched</a>
         </div>
       </div>
@@ -62,6 +63,15 @@
             <p>We’ll use the problem, urgency, and project type to point you toward the right next step — without turning your request into a call blast.</p>
           </div>
           <form aria-label="Referral request mockup">
+            <label for="timeline">Timing</label>
+            <select id="timeline">
+              <option>Urgent / active issue</option>
+              <option>Soon / repair needed</option>
+              <option>Planning / comparing options</option>
+              <option>Maintenance / prevention</option>
+              <option>Upgrade / resale prep</option>
+            </select>
+
             <label for="problem">What problem are you trying to solve?</label>
             <select id="problem">
               <option>Leak, missing shingles, or visible roof damage</option>
@@ -71,11 +81,12 @@
               <option>Not sure — help me triage it</option>
             </select>
 
-            <label for="timeline">How soon do you need help?</label>
-            <select id="timeline">
-              <option>Urgent — this week</option>
-              <option>Soon — within 30 days</option>
-              <option>Planning / comparing options</option>
+            <label for="project-stage-home">Project stage</label>
+            <select id="project-stage-home">
+              <option>Need help deciding next step</option>
+              <option>Ready for estimate</option>
+              <option>Comparing options</option>
+              <option>Documenting for insurance or resale</option>
             </select>
 
             <label for="zip">ZIP code</label>
