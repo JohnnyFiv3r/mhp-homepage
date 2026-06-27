@@ -150,8 +150,7 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
 .roofing-hero { position:relative; overflow:hidden; }
 .roofing-hero::before { content:""; position:absolute; inset:0; opacity:.12; background:url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=82") center/cover; mask-image:linear-gradient(to bottom, black, transparent 92%); }
 .project-intake-card { scroll-margin-top:110px; }
-.project-index-grid { display:grid; grid-template-columns:1.2fr .9fr .9fr; gap:18px; }
-.neighborhood-index-grid { display:grid; grid-template-columns:1.2fr repeat(2, .9fr); gap:18px; }
+.project-index-grid, .neighborhood-index-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; }
 .project-index-card, .neighborhood-index-card { border:1px solid var(--line); border-radius:30px; padding:28px; background:rgba(255,253,248,.82); box-shadow:0 18px 50px rgba(23,57,92,.1); }
 .project-index-card.live, .neighborhood-index-card.live { box-shadow:var(--shadow); }
 .project-index-card.planned, .neighborhood-index-card.planned { opacity:.78; }
