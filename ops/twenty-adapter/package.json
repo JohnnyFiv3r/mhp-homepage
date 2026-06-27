@@ -1,0 +1,16 @@
+{
+  "name": "mhp-twenty-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scoped Twenty CRM adapter for Murfreesboro Home Pros production readiness.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/readiness-check.mjs",
+    "dev": "node src/server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {}
+}
