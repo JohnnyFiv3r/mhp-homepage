@@ -1,18 +1,34 @@
-field_key,label,type,required,notes
-source_path,Source path,text,yes,URL path where request originated
-source_type,Source type,single_select,yes,home|project|neighborhood|zip|resources
-project_category,Project category,text,no,Normalized category slug when known
-problem,Problem / request type,text,yes,Homeowner-selected or typed issue
-timing,Timing / urgency,single_select,yes,Urgent|Soon|Planning|Maintenance|Upgrade
-project_stage,Project stage,single_select,yes,Deciding|Ready for estimate|Comparing|Documenting
-location_text,ZIP / neighborhood / nearby road,text,yes,Free-text location context
-homeowner_name,Homeowner name,text,yes,Collected before routing
-mobile_phone,Mobile phone,phone,yes,Primary SMS channel
-email,Email,email,no,Backup contact channel
-sms_consent,SMS consent,boolean,yes,Must be true before sending texts
-sms_consent_source,SMS consent source,text,yes,Form path plus timestamp from endpoint
-lead_status,Lead status,single_select,yes,See pipeline-statuses.csv
-matched_provider_ids,Matched provider IDs,multi_reference,no,Providers dispatched or matched
-referral_status,Referral status,single_select,no,Provider accepted|declined|no response|scheduled|won|lost
-follow_up_due_at,Follow-up due datetime,datetime,no,Next operational check
-notes,Internal notes,long_text,no,Triage and matching notes
+object,field_key,label,type,required,notes
+ServiceRequest,source_path,Source path,text,yes,URL path or call/SMS source where request originated
+ServiceRequest,source_type,Source type,single_select,yes,home|project|neighborhood|zip|resources|phone|sms|chat
+ServiceRequest,service,Service / project category,text,yes,Normalized trade/category slug when known
+ServiceRequest,problem,Problem / request type,text,yes,Homeowner-selected or typed issue
+ServiceRequest,urgency,Urgency,single_select,yes,Map site timing into emergency_safety|urgent_24h|normal_7d|planned_90d
+ServiceRequest,project_stage,Project stage,single_select,yes,Deciding|Ready for estimate|Comparing|Documenting
+ServiceRequest,qualification_tier,Qualification tier,single_select,no,Qualified opportunity tier after triage
+ServiceRequest,status,Status,single_select,yes,Use ServiceRequest.status enum in pipeline-statuses.csv
+ServiceRequest,owner,Owner,user_reference,no,Founder/operator/agent owner
+ServiceRequest,idempotency_key,Idempotency key,text,yes,Required for safe webhook replay handling
+ServiceRequest,source_event_id,Source event ID,text,yes,Gateway/webhook/call/SMS event id
+ServiceRequest,actor,Actor,text,yes,Human/agent/system actor creating update
+ServiceRequest,timestamp_utc,Timestamp UTC,datetime,yes,Server-side timestamp
+Property,location_text,ZIP / neighborhood / nearby road,text,yes,Free-text location context
+Property,zip,ZIP,text,no,Parsed ZIP when available
+Property,address,Address,text,no,Collect only when needed for coordination
+Property,occupancy_authority,Occupancy/authority,text,no,Whether requester owns/controls property when relevant
+Person,homeowner_name,Homeowner name,text,yes,Collected before routing
+Person,mobile_phone,Mobile phone,phone,yes,Primary SMS channel
+Person,email,Email,email,no,Backup contact channel
+Person,do_not_contact,Do not contact,boolean,yes,Global suppression signal
+ConsentEvent,channel,Consent channel,single_select,yes,sms|phone|email|data_sharing
+ConsentEvent,status,Consent status,single_select,yes,granted|limited|revoked|expired|unknown
+ConsentEvent,language_version,Consent language version,text,yes,Exact template/version shown or read
+ConsentEvent,language_text,Consent language text,long_text,yes,Exact consent language stored for proof
+ConsentEvent,source_url_or_call_id,Source URL / call ID,text,yes,Where consent was obtained
+ConsentEvent,scope,Consent scope,text,yes,Transactional request coordination and one selected partner at a time
+ConsentEvent,revocation,Revocation,long_text,no,STOP/HELP/reasonable-language opt-out events
+RoutingAttempt,matched_provider_ids,Matched provider IDs,multi_reference,no,Providers dispatched or matched
+RoutingAttempt,result,Routing result,single_select,no,accepted|rejected|timed_out|capacity_blocked|error
+Communication,template_id,Template ID,text,no,Versioned approved template id
+Communication,delivery_status,Delivery status,text,no,Telnyx or adapter delivery status
+JobOutcome,outcome,Job outcome,single_select,no,contacted|inspected|quoted|won|lost|unknown

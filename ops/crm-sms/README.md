@@ -1,85 +1,72 @@
-# CRM + SMS Machinery Pass
+# Twenty + Telnyx CRM/SMS Machinery
 
-This folder defines the operational schema before providers are loaded or Provider Grades are published.
+This folder implements the operating-system baseline from the Murfreesboro Home Pros business plan packet.
 
-## Current architecture decision
+## Decided stack
 
-GitHub Pages remains static. The live site must **not** call CRM or SMS APIs directly from browser JavaScript. Production submission should flow through one secure middle layer:
+- **CRM/system of record:** Twenty
+- **Communications:** Telnyx for SMS-first intake, local phone forwarding/hold, and controlled call fallback
+- **OpenClaw role:** orchestration layer through a scoped internal adapter
+- **Frontend:** GitHub Pages/static site only; no CRM/SMS secrets or direct provider API calls in browser JavaScript
 
-`Static form → secure form/webhook endpoint → CRM lead record → SMS automation → CRM activity/status updates`
+Production flow:
 
-The actual CRM/SMS vendor credentials and endpoint are intentionally not stored in this repo.
+`Static form → secure signed webhook endpoint → internal MHP adapter → Twenty records → Telnyx transactional SMS/call workflow → Twenty Communication/Consent/Status updates`
 
-## Step 1 scope: CRM setup baseline
+## Integration rules
 
-Create these CRM objects/tables/pipelines before loading providers:
+1. Twenty native MCP is treated as alpha/sandbox only.
+2. Production writes should go through a scoped internal adapter over Twenty REST/GraphQL APIs and webhooks.
+3. Telnyx is accessed through a replaceable communications adapter exposing intent-level operations such as:
+   - `send_transactional_sms`
+   - `notify_partner`
+   - `introduce_accepted_partner`
+   - `record_opt_out`
+   - `forward_call`
+4. Every write requires: idempotency key, actor, source event id, UTC timestamp, and audit logging.
+5. Webhooks require signature verification, event ledgering, replay protection, and dead-letter handling.
+6. Production business SMS requires A2P 10DLC registration/approval before sending.
 
-1. **Homeowner / Contact**
-   - name
-   - mobile phone
-   - email
-   - SMS consent status
-   - SMS consent timestamp/source
-   - STOP/HELP opt-out state
+## Twenty objects
 
-2. **Lead / Intake Request**
-   - source path
-   - source type: home, project, neighborhood, zip, resources
-   - project category
-   - problem
-   - timing / urgency
-   - project stage
-   - ZIP / neighborhood / location text
-   - lead status
-   - matched provider id(s)
-   - referral status
-   - follow-up due date
+See `../../data/crm/twenty-objects.csv` for the packet-aligned object model:
 
-3. **Provider**
-   - provider name
-   - company/contact fields
-   - category coverage
-   - ZIP/neighborhood/service-area coverage
-   - license/insurance notes
-   - capacity status
-   - preferred/graded flags
-   - SMS dispatch phone
-   - opt-in/relationship notes
+- Person
+- Company
+- PartnerDeal
+- ServiceRequest
+- Property
+- ConsentEvent
+- RoutingAttempt
+- Appointment
+- Communication
+- JobOutcome
+- PartnerTerritory
+- ComplianceDocument
+- InvoiceCredit
+- ContentAsset
+- SEOExperiment
+- Incident
 
-4. **Provider Grade Evidence**
-   - provider id
-   - category
-   - evidence source
-   - evidence type
-   - score fields
-   - last verified date
-   - public/private flag
+## Current repo state
 
-5. **SMS Activity**
-   - linked contact/lead/provider
-   - direction: outbound/inbound
-   - message type
-   - body/template id
-   - delivery status
-   - timestamp
-   - opt-out event flag
+The static site forms are prepared with:
 
-## Lead pipeline statuses
+- `data-crm-form="lead-intake"`
+- source path/type/category hidden fields
+- normalized names for timing/problem/project stage/location
+- homeowner name/mobile/email
+- `sms_consent` checkbox using `sms_consent_web_v1`
 
-Use the statuses in `pipeline-statuses.csv` as the initial CRM pipeline. The key principle is that Provider Grades can remain unpublished while the CRM quietly starts capturing evidence, matching outcomes, and follow-up quality.
+The form buttons are still non-submitting prototype buttons until the secure endpoint exists. This is intentional; it avoids collecting private homeowner data into nowhere and avoids exposing credentials client-side.
 
-## SMS integration points
+## Next implementation step
 
-Use `sms-templates.md` as the first automation set:
+Build the secure endpoint/adapter skeleton:
 
-- Homeowner intake confirmation
-- Provider dispatch / claim request
-- Provider decline/accept acknowledgement
-- Homeowner provider accepted update
-- Follow-up after estimated contact
-- Feedback request
-- STOP/HELP compliance handling
-
-## Secure endpoint contract
-
-`webhook-contract.json` defines the payload the static forms are being prepared to send once the CRM/webhook endpoint is chosen.
+1. Accept static form payload.
+2. Validate required fields and bot score.
+3. Normalize timing into `Urgency` enum.
+4. Create/update Twenty `Person`, `Property`, `ConsentEvent`, and `ServiceRequest` using an idempotency key.
+5. If consent is granted and 10DLC is approved, send `homeowner_request_received_v1` through Telnyx.
+6. Ledger all events and failures.

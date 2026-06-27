@@ -1,27 +1,50 @@
 {
   "event": "lead_intake_submitted",
-  "version": "1.0",
+  "version": "1.1",
+  "idempotency_key": "server-generated stable key",
+  "source_event_id": "gateway-or-form-event-id",
+  "timestamp_utc": "server-generated ISO-8601 timestamp",
+  "actor": "website_form",
   "source": {
     "site": "mhp-homepage",
     "source_path": "/projects/roofing/",
     "source_type": "project",
-    "project_category": "roofing"
+    "service": "roofing"
   },
-  "lead": {
-    "timing": "Urgent / active issue",
-    "problem": "Active leak or water stain",
-    "project_stage": "Ready for estimate",
-    "location_text": "37128 / Blackman",
+  "person": {
     "homeowner_name": "Example Homeowner",
     "mobile_phone": "+16155550123",
     "email": "homeowner@example.com",
-    "sms_consent": true,
-    "sms_consent_text": "I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.",
-    "sms_consent_timestamp": "server-generated ISO-8601 timestamp"
+    "do_not_contact": false
   },
-  "routing": {
-    "lead_status": "new_intake",
-    "matched_provider_ids": [],
-    "notes": "Created from static site form; CRM/webhook endpoint to enrich IP/user agent privately if needed."
+  "property": {
+    "location_text": "37128 / Blackman",
+    "zip": "37128",
+    "address": null,
+    "occupancy_authority": "unknown"
+  },
+  "service_request": {
+    "problem": "Active leak or water stain",
+    "urgency": "urgent_24h",
+    "project_stage": "Ready for estimate",
+    "qualification_tier": null,
+    "status": "new"
+  },
+  "consent_event": {
+    "channel": "sms",
+    "status": "granted",
+    "language_version": "sms_consent_web_v1",
+    "language_text": "By checking this box and submitting, you agree to receive transactional text messages from Murfreesboro Home Pros about this service request, including automated messages. You also authorize us to share the details of this request with one selected local service partner at a time for the purpose of coordinating your request. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See SMS Terms and Privacy Notice. Separate consent is required for promotional messages.",
+    "source_url_or_call_id": "https://johnnyfiv3r.github.io/mhp-homepage/projects/roofing/",
+    "scope": "transactional service-request coordination; one selected local service partner at a time",
+    "revocation": null
+  },
+  "adapter_requirements": {
+    "crm": "Twenty via scoped internal adapter over REST/GraphQL/webhooks",
+    "communications": "Telnyx via replaceable communications adapter",
+    "verify_signature": true,
+    "ledger_all_events": true,
+    "dead_letter_queue": true,
+    "replay_protection": true
   }
 }

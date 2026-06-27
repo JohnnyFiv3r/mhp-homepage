@@ -1,17 +1,27 @@
-field_key,label,type,required,notes
-provider_id,Provider ID,text,yes,Stable internal id
-provider_name,Provider name,text,yes,Public/company name
-primary_contact_name,Primary contact,text,no,Operational contact
-sms_dispatch_phone,SMS dispatch phone,phone,no,Provider SMS routing number
-email,Email,email,no,Provider contact email
-website,Website,url,no,Public website
-categories,Categories,multi_select,yes,Project categories covered
-service_zips,Service ZIPs,multi_select,no,ZIP coverage
-service_neighborhoods,Service neighborhoods,multi_select,no,Neighborhood coverage
-license_notes,License notes,long_text,no,Licensing/permit verification notes
-insurance_notes,Insurance notes,long_text,no,Insurance verification notes
-capacity_status,Capacity status,single_select,yes,Accepting|Limited|Paused|Unknown
-preferred_flag,Preferred provider,boolean,no,Private routing signal, not public grade
-graded_flag,Provider grade ready,boolean,no,Do not publish until methodology is complete
-last_verified_at,Last verified,date,no,Most recent evidence/contact verification
-relationship_notes,Relationship notes,long_text,no,Private partner/outreach notes
+object,field_key,label,type,required,notes
+Company,provider_id,Provider ID,text,yes,Stable internal id
+Company,provider_name,Provider/company name,text,yes,Public/company name
+Company,trade,Trade/category,multi_select,yes,Project categories covered
+Company,status,Partner status,single_select,yes,prospect|due_diligence|pilot|active|probation|paused|terminated
+Company,territory,Territory,text,no,ZIP/neighborhood/service-area coverage summary
+Company,license,License notes,long_text,no,License/compliance verification notes
+Company,insurance,Insurance notes,long_text,no,Insurance verification notes
+Company,billing,Billing notes,long_text,no,Commercial terms and billing status
+Company,sla,SLA notes,long_text,no,Response/acceptance expectations
+Company,score,Partner score,number,no,Private score; not public grade by default
+Person,primary_contact_name,Primary contact,text,no,Operational contact
+Person,sms_dispatch_phone,SMS dispatch phone,phone,no,Provider SMS routing number
+Person,email,Email,email,no,Provider contact email
+PartnerTerritory,service_zips,Service ZIPs,multi_select,no,ZIP coverage
+PartnerTerritory,service_neighborhoods,Service neighborhoods,multi_select,no,Neighborhood coverage
+PartnerTerritory,capacity,Capacity,single_select,yes,Accepting|Limited|Paused|Unknown
+PartnerTerritory,priority,Priority,number,no,Exclusive/overflow routing order
+ComplianceDocument,type,Document type,text,no,License insurance certification etc.
+ComplianceDocument,number,Document number,text,no,License/policy/certification number where appropriate
+ComplianceDocument,issuer,Issuer,text,no,Issuing authority/carrier/source
+ComplianceDocument,effective_expiry,Effective/expiry,text,no,Date range
+ComplianceDocument,verification_source,Verification source,url,no,Public or private verification source
+Company,preferred_flag,Preferred provider,boolean,no,Private routing signal not public grade
+Company,graded_flag,Provider grade ready,boolean,no,Do not publish until methodology is complete
+Company,last_verified_at,Last verified,date,no,Most recent evidence/contact verification
+Company,relationship_notes,Relationship notes,long_text,no,Private partner/outreach notes

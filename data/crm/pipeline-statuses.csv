@@ -1,15 +1,38 @@
-status_key,label,owner,description
-new_intake,New intake,System,Form received; no human triage yet
-needs_triage,Needs triage,Operator,Review category/problem/location/urgency
-needs_homeowner_info,Needs homeowner info,Operator,Missing detail required before routing
-ready_to_match,Ready to match,Operator,Lead is qualified enough to select provider
-provider_dispatched,Provider dispatched,System/Operator,SMS/email sent to selected provider
-provider_accepted,Provider accepted,Provider,Provider claimed/accepted lead
-provider_declined,Provider declined,Provider,Provider declined or unavailable
-homeowner_contacted,Homeowner contacted,Provider/Operator,Provider or operator contacted homeowner
-estimate_scheduled,Estimate scheduled,Provider/Operator,Appointment or estimate time set
-won,Won,Operator,Job awarded or referral successful
-lost,Lost,Operator,Homeowner chose another option/canceled/no fit
-closed_no_response,Closed no response,Operator,No response after follow-up cadence
-feedback_requested,Feedback requested,System,Post-contact feedback message sent
-feedback_received,Feedback received,System/Operator,Feedback captured for Provider Grades evidence
+object,field,status_key,label,description
+ServiceRequest,status,new,New,Form/SMS/call received; not qualified yet
+ServiceRequest,status,qualifying,Qualifying,Collecting missing fields and confirming consent/scope
+ServiceRequest,status,qualified,Qualified,Minimum qualification and consent checks passed
+ServiceRequest,status,routing,Routing,Eligible partner selection and dispatch in progress
+ServiceRequest,status,accepted,Accepted,Partner accepted within consent/scope
+ServiceRequest,status,appointment_requested,Appointment requested,Appointment window requested but not confirmed
+ServiceRequest,status,appointment_confirmed,Appointment confirmed,Provider/homeowner appointment confirmed
+ServiceRequest,status,closed_won,Closed won,Referral/job outcome successful or billable by definition
+ServiceRequest,status,closed_lost,Closed lost,Homeowner canceled chose another option or no fit
+ServiceRequest,status,invalid,Invalid,Does not meet qualified opportunity definition
+ServiceRequest,status,duplicate,Duplicate,Duplicate of an existing active request
+ServiceRequest,status,do_not_contact,Do not contact,Consumer opted out or requested no further contact
+Partner,status,prospect,Prospect,Potential provider not yet contacted or qualified
+Partner,status,due_diligence,Due diligence,Provider research/verification in progress
+Partner,status,pilot,Pilot,Trial partner under measured pilot
+Partner,status,active,Active,Approved active partner
+Partner,status,probation,Probation,Active but under quality/SLA review
+Partner,status,paused,Paused,Temporarily not receiving leads
+Partner,status,terminated,Terminated,No longer eligible for routing
+Urgency,value,emergency_safety,Emergency/safety,Immediate safety hazard; route to emergency guidance where appropriate
+Urgency,value,urgent_24h,Urgent 24h,Needs response within about 24 hours
+Urgency,value,normal_7d,Normal 7d,Needs help within about a week
+Urgency,value,planned_90d,Planned 90d,Planning or comparison stage
+Consent,status,granted,Granted,Consent granted for stated scope/version
+Consent,status,limited,Limited,Consent limited to specific channel/scope
+Consent,status,revoked,Revoked,STOP or other reasonable revocation received
+Consent,status,expired,Expired,Consent no longer valid by policy
+Consent,status,unknown,Unknown,Consent missing or unclear; do not send outbound automation
+Routing,result,accepted,Accepted,Partner accepted routing attempt
+Routing,result,rejected,Rejected,Partner rejected attempt
+Routing,result,timed_out,Timed out,Acceptance timer expired
+Routing,result,capacity_blocked,Capacity blocked,Partner unavailable by capacity/status
+Routing,result,error,Error,Technical or policy failure during routing
+Incident,severity,sev1,SEV1,Critical compliance/security/consumer harm risk
+Incident,severity,sev2,SEV2,Major issue requiring urgent review
+Incident,severity,sev3,SEV3,Moderate issue for tracked remediation
+Incident,severity,sev4,SEV4,Minor issue or improvement item

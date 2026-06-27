@@ -133,6 +133,7 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
 .optional-label { color:var(--slate); font-weight:800; font-size:.82em; }
 .request-card .consent-check { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; margin-top:14px; color:var(--slate); font-size:.82rem; line-height:1.45; }
 .request-card .consent-check input { width:auto; margin-top:2px; accent-color:var(--terracotta); }
+.request-card .consent-check a { color:var(--navy); font-weight:900; text-decoration:underline; text-underline-offset:2px; }
 .request-card button, .signup-card button { width:100%; min-height:52px; }
 .form-note { font-size:.82rem; line-height:1.45; }
 
@@ -315,3 +316,9 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
   html { scroll-behavior:auto; }
   *, *::before, *::after { transition:none !important; }
 }
+
+.policy-content { display:grid; gap:18px; max-width:920px; }
+.policy-card { background:rgba(255,255,255,.82); border:1px solid var(--line); border-radius:24px; padding:24px; box-shadow:0 14px 34px rgba(23,57,92,.08); }
+.policy-card h2 { margin-top:0; font-size:1.25rem; }
+.policy-card p { color:var(--slate); }
+.footer-links { display:flex; flex-wrap:wrap; gap:10px 16px; }
