@@ -129,6 +129,37 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
 
 .section { padding: 88px 0; }
 .section-lede { margin-top:20px; color:var(--slate); font-size:1.08rem; }
+.subpage-hero, .project-hero { padding:72px 0 44px; }
+.compact-hero { padding-bottom:24px; }
+.compact-hero h1 { font-size:clamp(2.7rem, 5.4vw, 4.8rem); }
+.narrow-copy { max-width:880px; }
+.project-hero-grid { display:grid; grid-template-columns:1.02fr .98fr; gap:46px; align-items:center; }
+.project-hero-copy { position:relative; z-index:1; }
+.roofing-hero { position:relative; overflow:hidden; }
+.roofing-hero::before { content:""; position:absolute; inset:0; opacity:.12; background:url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=82") center/cover; mask-image:linear-gradient(to bottom, black, transparent 92%); }
+.project-intake-card { scroll-margin-top:110px; }
+.project-index-grid { display:grid; grid-template-columns:1.2fr .9fr .9fr; gap:18px; }
+.project-index-card { border:1px solid var(--line); border-radius:30px; padding:28px; background:rgba(255,253,248,.82); box-shadow:0 18px 50px rgba(23,57,92,.1); }
+.project-index-card.live { box-shadow:var(--shadow); }
+.project-index-card.planned { opacity:.78; }
+.project-index-card span, .scenario-card span, .resource-list span { display:inline-flex; margin-bottom:12px; border-radius:999px; padding:.36rem .62rem; color:#1d2933; background:rgba(232,155,49,.92); font-size:.72rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+.project-index-card p { color:var(--slate); }
+.mini-link-row { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 22px; }
+.mini-link-row a { color:var(--navy); background:rgba(255,255,255,.7); border:1px solid var(--line); border-radius:999px; padding:.42rem .7rem; font-size:.82rem; font-weight:900; text-decoration:none; }
+.scenario-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.scenario-card { border:1px solid var(--line); border-radius:26px; padding:24px; background:rgba(255,253,248,.82); box-shadow:0 16px 44px rgba(23,57,92,.08); }
+.scenario-card p { color:var(--slate); margin-bottom:0; }
+.reverse-grid { grid-template-columns:1.1fr .9fr; }
+.roofing-local-card { background:linear-gradient(180deg, rgba(23,57,92,.16), rgba(16,43,70,.94)), url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=82") center/cover !important; }
+.backlink-list { display:grid; gap:12px; margin-top:24px; }
+.backlink-list a { display:flex; justify-content:space-between; gap:16px; align-items:center; border:1px solid var(--line); border-radius:18px; padding:15px 16px; background:rgba(255,253,248,.76); text-decoration:none; color:var(--navy); font-weight:900; }
+.backlink-list span { color:var(--gold); font-size:.76rem; text-transform:uppercase; letter-spacing:.1em; }
+.provider-grade-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:stretch; }
+.grade-list-spaced { margin-top:22px; }
+.roofing-resource-grid { display:grid; grid-template-columns:.82fr 1.18fr; gap:46px; align-items:start; }
+.resource-list { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.resource-list article { border:1px solid var(--line); border-radius:22px; padding:20px; background:rgba(255,253,248,.82); }
+.benefit-list a { color:var(--navy); font-weight:900; text-decoration-color:rgba(232,155,49,.7); text-underline-offset:4px; }
 .local-section { padding-top:54px; }
 .local-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:46px; align-items:center; }
 .local-copy { position:relative; }
@@ -217,8 +248,11 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
   .brand-copy { font-size:.68rem; }
   .brand-copy strong { font-size:.78rem; }
   .hero { padding-top:34px; }
-  .hero-grid, .local-grid, .conversion-grid, .featured-heading, .gallery-heading, .referral-panel, .footer-grid { grid-template-columns:1fr; gap:28px; }
-  .promise-grid, .steps, .job-gallery { grid-template-columns:1fr; }
+  .hero-grid, .project-hero-grid, .local-grid, .reverse-grid, .conversion-grid, .featured-heading, .gallery-heading, .referral-panel, .roofing-resource-grid, .footer-grid { grid-template-columns:1fr; gap:28px; }
+  .promise-grid, .steps, .job-gallery, .project-index-grid, .scenario-grid, .provider-grade-grid, .resource-list { grid-template-columns:1fr; }
+  .subpage-hero, .project-hero { padding-top:42px; }
+  .project-hero-grid { gap:18px; }
+  .project-hero .hero-actions { margin-bottom:0; }
   .local-section { padding-top:44px; }
   .local-card-stack { grid-template-columns:1fr; }
   .local-card.urgent { min-height:300px; grid-row:auto; }
