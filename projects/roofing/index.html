@@ -59,9 +59,12 @@
             <h2>What roofing problem are you trying to solve?</h2>
             <p>Tell us the issue, urgency, and ZIP. Production requests will route one provider at a time with explicit consent.</p>
           </div>
-          <form aria-label="Roofing request mockup">
+          <form data-crm-form="lead-intake" data-crm-endpoint="pending" data-source-type="project" data-project-category="roofing" aria-label="Roofing request mockup">
+            <input type="hidden" name="source_path" value="/projects/roofing/" />
+            <input type="hidden" name="source_type" value="project" />
+            <input type="hidden" name="project_category" value="roofing" />
             <label for="roofing-timeline">Timing</label>
-            <select id="roofing-timeline">
+            <select id="roofing-timeline" name="timing">
               <option>Urgent / active leak or damage</option>
               <option>Soon / repair needed</option>
               <option>Planning / comparing options</option>
@@ -70,7 +73,7 @@
             </select>
 
             <label for="roofing-problem">Roofing issue</label>
-            <select id="roofing-problem">
+            <select id="roofing-problem" name="problem">
               <option>Active leak or water stain</option>
               <option>Missing shingles or visible damage</option>
               <option>Storm / hail / wind damage question</option>
@@ -79,7 +82,7 @@
             </select>
 
             <label for="roofing-stage">Project stage</label>
-            <select id="roofing-stage">
+            <select id="roofing-stage" name="project_stage">
               <option>Need help deciding next step</option>
               <option>Ready for estimate</option>
               <option>Comparing roofers</option>
@@ -87,10 +90,26 @@
             </select>
 
             <label for="roofing-location">ZIP or neighborhood</label>
-            <input id="roofing-location" placeholder="ZIP or neighborhood" />
+            <input id="roofing-location" placeholder="ZIP or neighborhood"  name="location_text" />
+
+            <div class="crm-contact-fields" data-crm-section="contact-and-sms-consent">
+              <label for="projects-roofing-homeowner-name">Name</label>
+              <input id="projects-roofing-homeowner-name" name="homeowner_name" autocomplete="name" placeholder="Your name" />
+
+              <label for="projects-roofing-mobile-phone">Mobile phone</label>
+              <input id="projects-roofing-mobile-phone" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(615) 555-0123" />
+
+              <label for="projects-roofing-email">Email <span class="optional-label">optional</span></label>
+              <input id="projects-roofing-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+
+              <label class="consent-check" for="projects-roofing-sms-consent">
+                <input id="projects-roofing-sms-consent" name="sms_consent" type="checkbox" value="true" />
+                <span>I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
 
             <button type="button">Start roofing intake</button>
-            <p class="form-note">Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing requires homeowner consent before a request is shared. Providers are responsible for estimates, contracts, permits, work, warranties, and outcomes.</p>
+            <p class="form-note">Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing and SMS follow-up require homeowner consent before a request is shared. Providers are responsible for estimates, contracts, permits, work, warranties, and outcomes.</p>
           </form>
         </aside>
       </div>

@@ -1,0 +1,18 @@
+field_key,label,type,required,notes
+source_path,Source path,text,yes,URL path where request originated
+source_type,Source type,single_select,yes,home|project|neighborhood|zip|resources
+project_category,Project category,text,no,Normalized category slug when known
+problem,Problem / request type,text,yes,Homeowner-selected or typed issue
+timing,Timing / urgency,single_select,yes,Urgent|Soon|Planning|Maintenance|Upgrade
+project_stage,Project stage,single_select,yes,Deciding|Ready for estimate|Comparing|Documenting
+location_text,ZIP / neighborhood / nearby road,text,yes,Free-text location context
+homeowner_name,Homeowner name,text,yes,Collected before routing
+mobile_phone,Mobile phone,phone,yes,Primary SMS channel
+email,Email,email,no,Backup contact channel
+sms_consent,SMS consent,boolean,yes,Must be true before sending texts
+sms_consent_source,SMS consent source,text,yes,Form path plus timestamp from endpoint
+lead_status,Lead status,single_select,yes,See pipeline-statuses.csv
+matched_provider_ids,Matched provider IDs,multi_reference,no,Providers dispatched or matched
+referral_status,Referral status,single_select,no,Provider accepted|declined|no response|scheduled|won|lost
+follow_up_due_at,Follow-up due datetime,datetime,no,Next operational check
+notes,Internal notes,long_text,no,Triage and matching notes

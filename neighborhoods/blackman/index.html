@@ -57,9 +57,12 @@
             <h2>What do you need help with near Blackman?</h2>
             <p>Start with the problem and timing. We’ll use project type, location, and provider fit before any one-provider routing.</p>
           </div>
-          <form aria-label="Blackman request mockup">
+          <form data-crm-form="lead-intake" data-crm-endpoint="pending" data-source-type="neighborhood" data-project-category="blackman" aria-label="Blackman request mockup">
+            <input type="hidden" name="source_path" value="/neighborhoods/blackman/" />
+            <input type="hidden" name="source_type" value="neighborhood" />
+            <input type="hidden" name="project_category" value="blackman" />
             <label for="blackman-problem">Project or problem</label>
-            <select id="blackman-problem">
+            <select id="blackman-problem" name="problem">
               <option>Roof leak, storm damage, or inspection</option>
               <option>Roof replacement planning</option>
               <option>Gutters, drainage, or exterior water issue</option>
@@ -68,14 +71,14 @@
             </select>
 
             <label for="blackman-timeline">Timing</label>
-            <select id="blackman-timeline">
+            <select id="blackman-timeline" name="timing">
               <option>Urgent — this week</option>
               <option>Soon — within 30 days</option>
               <option>Planning / comparing options</option>
             </select>
 
             <label for="blackman-stage">Project stage</label>
-            <select id="blackman-stage">
+            <select id="blackman-stage" name="project_stage">
               <option>Need help deciding next step</option>
               <option>Ready for estimate</option>
               <option>Comparing options</option>
@@ -83,10 +86,26 @@
             </select>
 
             <label for="blackman-location">ZIP, subdivision, or nearby road</label>
-            <input id="blackman-location" placeholder="ZIP or nearby road" />
+            <input id="blackman-location" placeholder="ZIP or nearby road"  name="location_text" />
+
+            <div class="crm-contact-fields" data-crm-section="contact-and-sms-consent">
+              <label for="neighborhoods-blackman-homeowner-name">Name</label>
+              <input id="neighborhoods-blackman-homeowner-name" name="homeowner_name" autocomplete="name" placeholder="Your name" />
+
+              <label for="neighborhoods-blackman-mobile-phone">Mobile phone</label>
+              <input id="neighborhoods-blackman-mobile-phone" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(615) 555-0123" />
+
+              <label for="neighborhoods-blackman-email">Email <span class="optional-label">optional</span></label>
+              <input id="neighborhoods-blackman-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+
+              <label class="consent-check" for="neighborhoods-blackman-sms-consent">
+                <input id="neighborhoods-blackman-sms-consent" name="sms_consent" type="checkbox" value="true" />
+                <span>I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
 
             <button type="button">Start Blackman intake</button>
-            <p class="form-note">Takes under 60 seconds. Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing requires homeowner consent before a request is shared.</p>
+            <p class="form-note">Takes under 60 seconds. Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing and SMS follow-up require homeowner consent before a request is shared.</p>
           </form>
         </aside>
       </div>

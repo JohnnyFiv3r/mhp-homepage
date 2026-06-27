@@ -62,9 +62,12 @@
             <h2>Tell us what went wrong.</h2>
             <p>We’ll use the problem, urgency, and project type to point you toward the right next step — without turning your request into a call blast.</p>
           </div>
-          <form aria-label="Referral request mockup">
+          <form data-crm-form="lead-intake" data-crm-endpoint="pending" data-source-type="home" data-project-category="general" aria-label="Referral request mockup">
+            <input type="hidden" name="source_path" value="home" />
+            <input type="hidden" name="source_type" value="home" />
+            <input type="hidden" name="project_category" value="general" />
             <label for="timeline">Timing</label>
-            <select id="timeline">
+            <select id="timeline" name="timing">
               <option>Urgent / active issue</option>
               <option>Soon / repair needed</option>
               <option>Planning / comparing options</option>
@@ -73,7 +76,7 @@
             </select>
 
             <label for="problem">What problem are you trying to solve?</label>
-            <select id="problem">
+            <select id="problem" name="problem">
               <option>Leak, missing shingles, or visible roof damage</option>
               <option>Storm damage and insurance questions</option>
               <option>Old roof nearing replacement</option>
@@ -82,7 +85,7 @@
             </select>
 
             <label for="project-stage-home">Project stage</label>
-            <select id="project-stage-home">
+            <select id="project-stage-home" name="project_stage">
               <option>Need help deciding next step</option>
               <option>Ready for estimate</option>
               <option>Comparing options</option>
@@ -90,10 +93,26 @@
             </select>
 
             <label for="zip">ZIP code</label>
-            <input id="zip" inputmode="numeric" placeholder="37127, 37128, 37129, 37130..." />
+            <input id="zip" inputmode="numeric" placeholder="37127, 37128, 37129, 37130..."  name="location_text" />
+
+            <div class="crm-contact-fields" data-crm-section="contact-and-sms-consent">
+              <label for="home-homeowner-name">Name</label>
+              <input id="home-homeowner-name" name="homeowner_name" autocomplete="name" placeholder="Your name" />
+
+              <label for="home-mobile-phone">Mobile phone</label>
+              <input id="home-mobile-phone" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(615) 555-0123" />
+
+              <label for="home-email">Email <span class="optional-label">optional</span></label>
+              <input id="home-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+
+              <label class="consent-check" for="home-sms-consent">
+                <input id="home-sms-consent" name="sms_consent" type="checkbox" value="true" />
+                <span>I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
 
             <button type="button">Start my match</button>
-            <p class="form-note">Prototype form only. Murfreesboro Home Pros is a research and referral service, not a contractor. Production requests will include consent for one-provider-at-a-time routing before submission.</p>
+            <p class="form-note">Murfreesboro Home Pros is a research and referral service, not a contractor. Production submission will route through the CRM/SMS intake endpoint after confirmation.</p>
           </form>
         </aside>
       </div>

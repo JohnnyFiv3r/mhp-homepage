@@ -57,9 +57,12 @@
             <h2>What crawl space &amp; moisture problem are you trying to solve?</h2>
             <p>Tell us the issue, timing, and location. Routing happens one provider at a time, with consent.</p>
           </div>
-          <form aria-label="Crawl Space &amp; Moisture request mockup">
+          <form data-crm-form="lead-intake" data-crm-endpoint="pending" data-source-type="project" data-project-category="crawl-space-moisture" aria-label="Crawl Space &amp; Moisture request mockup">
+            <input type="hidden" name="source_path" value="/projects/crawl-space-moisture/" />
+            <input type="hidden" name="source_type" value="project" />
+            <input type="hidden" name="project_category" value="crawl-space-moisture" />
             <label for="project-timeline">Timing</label>
-            <select id="project-timeline">
+            <select id="project-timeline" name="timing">
               <option>Urgent / active issue</option>
               <option>Soon / repair needed</option>
               <option>Planning / comparing options</option>
@@ -67,7 +70,7 @@
               <option>Upgrade / resale prep</option>
             </select>
             <label for="project-problem">Project issue</label>
-            <select id="project-problem">
+            <select id="project-problem" name="problem">
               <option>Repair or active problem</option>
               <option>Replacement or installation planning</option>
               <option>Inspection / estimate before deciding</option>
@@ -75,16 +78,33 @@
               <option>Not sure — help me triage it</option>
             </select>
             <label for="project-stage">Project stage</label>
-            <select id="project-stage">
+            <select id="project-stage" name="project_stage">
               <option>Need help deciding next step</option>
               <option>Ready for estimate</option>
               <option>Comparing options</option>
               <option>Documenting for insurance or resale</option>
             </select>
             <label for="project-location">ZIP or neighborhood</label>
-            <input id="project-location" placeholder="ZIP or neighborhood" />
+            <input id="project-location" placeholder="ZIP or neighborhood"  name="location_text" />
+
+            <div class="crm-contact-fields" data-crm-section="contact-and-sms-consent">
+              <label for="projects-crawl-space-moisture-homeowner-name">Name</label>
+              <input id="projects-crawl-space-moisture-homeowner-name" name="homeowner_name" autocomplete="name" placeholder="Your name" />
+
+              <label for="projects-crawl-space-moisture-mobile-phone">Mobile phone</label>
+              <input id="projects-crawl-space-moisture-mobile-phone" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(615) 555-0123" />
+
+              <label for="projects-crawl-space-moisture-email">Email <span class="optional-label">optional</span></label>
+              <input id="projects-crawl-space-moisture-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+
+              <label class="consent-check" for="projects-crawl-space-moisture-sms-consent">
+                <input id="projects-crawl-space-moisture-sms-consent" name="sms_consent" type="checkbox" value="true" />
+                <span>I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
+
             <button type="button">Start crawl space &amp; moisture intake</button>
-            <p class="form-note">Takes under 60 seconds. Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing requires homeowner consent before a request is shared.</p>
+            <p class="form-note">Takes under 60 seconds. Murfreesboro Home Pros is a research and referral service, not a contractor. Provider routing and SMS follow-up require homeowner consent before a request is shared.</p>
           </form>
         </aside>
       </div>

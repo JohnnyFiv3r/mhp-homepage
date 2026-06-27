@@ -1,0 +1,27 @@
+{
+  "event": "lead_intake_submitted",
+  "version": "1.0",
+  "source": {
+    "site": "mhp-homepage",
+    "source_path": "/projects/roofing/",
+    "source_type": "project",
+    "project_category": "roofing"
+  },
+  "lead": {
+    "timing": "Urgent / active issue",
+    "problem": "Active leak or water stain",
+    "project_stage": "Ready for estimate",
+    "location_text": "37128 / Blackman",
+    "homeowner_name": "Example Homeowner",
+    "mobile_phone": "+16155550123",
+    "email": "homeowner@example.com",
+    "sms_consent": true,
+    "sms_consent_text": "I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.",
+    "sms_consent_timestamp": "server-generated ISO-8601 timestamp"
+  },
+  "routing": {
+    "lead_status": "new_intake",
+    "matched_provider_ids": [],
+    "notes": "Created from static site form; CRM/webhook endpoint to enrich IP/user agent privately if needed."
+  }
+}

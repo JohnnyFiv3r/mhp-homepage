@@ -1,0 +1,15 @@
+status_key,label,owner,description
+new_intake,New intake,System,Form received; no human triage yet
+needs_triage,Needs triage,Operator,Review category/problem/location/urgency
+needs_homeowner_info,Needs homeowner info,Operator,Missing detail required before routing
+ready_to_match,Ready to match,Operator,Lead is qualified enough to select provider
+provider_dispatched,Provider dispatched,System/Operator,SMS/email sent to selected provider
+provider_accepted,Provider accepted,Provider,Provider claimed/accepted lead
+provider_declined,Provider declined,Provider,Provider declined or unavailable
+homeowner_contacted,Homeowner contacted,Provider/Operator,Provider or operator contacted homeowner
+estimate_scheduled,Estimate scheduled,Provider/Operator,Appointment or estimate time set
+won,Won,Operator,Job awarded or referral successful
+lost,Lost,Operator,Homeowner chose another option/canceled/no fit
+closed_no_response,Closed no response,Operator,No response after follow-up cadence
+feedback_requested,Feedback requested,System,Post-contact feedback message sent
+feedback_received,Feedback received,System/Operator,Feedback captured for Provider Grades evidence

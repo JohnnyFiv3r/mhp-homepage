@@ -48,10 +48,30 @@
         </div>
         <aside class="request-card project-intake-card" id="neighborhood-intake" aria-label="Old Fort request preview">
           <div class="request-card-head"><span class="status-pill">Old Fort intake</span><h2>What do you need help with near Old Fort?</h2><p>Start with urgency, project type, and location. Provider routing requires consent.</p></div>
-          <form aria-label="Old Fort request mockup">
-            <label for="neighborhood-urgency">Timing</label><select id="neighborhood-urgency"><option>Urgent — this week</option><option>Soon — within 30 days</option><option>Planning / comparing options</option></select>
-            <label for="neighborhood-problem">Project or problem</label><select id="neighborhood-problem"><option>Roofing, leak, or storm damage</option><option>HVAC, plumbing, or electrical issue</option><option>Drainage, gutters, or exterior water issue</option><option>Deck, fence, paint, flooring, or remodel project</option><option>Not sure — help me triage it</option></select>
-            <label for="neighborhood-stage">Project stage</label><select id="neighborhood-stage"><option>Need help deciding next step</option><option>Ready for estimate</option><option>Comparing options</option><option>Documenting for insurance or resale</option></select><label for="neighborhood-location">ZIP, street, or nearby landmark</label><input id="neighborhood-location" placeholder="ZIP or nearby road" />
+          <form data-crm-form="lead-intake" data-crm-endpoint="pending" data-source-type="neighborhood" data-project-category="old-fort" aria-label="Old Fort request mockup">
+            <input type="hidden" name="source_path" value="/neighborhoods/old-fort/" />
+            <input type="hidden" name="source_type" value="neighborhood" />
+            <input type="hidden" name="project_category" value="old-fort" />
+            <label for="neighborhood-urgency">Timing</label><select id="neighborhood-urgency" name="timing"><option>Urgent — this week</option><option>Soon — within 30 days</option><option>Planning / comparing options</option></select>
+            <label for="neighborhood-problem">Project or problem</label><select id="neighborhood-problem" name="problem"><option>Roofing, leak, or storm damage</option><option>HVAC, plumbing, or electrical issue</option><option>Drainage, gutters, or exterior water issue</option><option>Deck, fence, paint, flooring, or remodel project</option><option>Not sure — help me triage it</option></select>
+            <label for="neighborhood-stage">Project stage</label><select id="neighborhood-stage" name="project_stage"><option>Need help deciding next step</option><option>Ready for estimate</option><option>Comparing options</option><option>Documenting for insurance or resale</option></select><label for="neighborhood-location">ZIP, street, or nearby landmark</label><input id="neighborhood-location" placeholder="ZIP or nearby road"  name="location_text" />
+
+            <div class="crm-contact-fields" data-crm-section="contact-and-sms-consent">
+              <label for="neighborhoods-old-fort-homeowner-name">Name</label>
+              <input id="neighborhoods-old-fort-homeowner-name" name="homeowner_name" autocomplete="name" placeholder="Your name" />
+
+              <label for="neighborhoods-old-fort-mobile-phone">Mobile phone</label>
+              <input id="neighborhoods-old-fort-mobile-phone" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(615) 555-0123" />
+
+              <label for="neighborhoods-old-fort-email">Email <span class="optional-label">optional</span></label>
+              <input id="neighborhoods-old-fort-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+
+              <label class="consent-check" for="neighborhoods-old-fort-sms-consent">
+                <input id="neighborhoods-old-fort-sms-consent" name="sms_consent" type="checkbox" value="true" />
+                <span>I agree to receive texts about my request from Murfreesboro Home Pros and matched providers. Message/data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
+
             <button type="button">Start local intake</button>
             <p class="form-note">Takes under 60 seconds. Murfreesboro Home Pros is a research and referral service, not a contractor. No provider receives your request without consent.</p>
           </form>
