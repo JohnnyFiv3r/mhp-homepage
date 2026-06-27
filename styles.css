@@ -202,11 +202,12 @@ h3 { font-size: 1.18rem; letter-spacing:-.02em; }
 .signup-card p { margin-bottom:0; color:var(--slate); font-size:.86rem; }
 
 .site-footer { padding:44px 0; background:#102b46; color:rgba(255,255,255,.82); }
-.footer-grid { display:grid; grid-template-columns:.65fr 1.35fr; gap:34px; align-items:start; }
+.footer-grid { display:grid; grid-template-columns:.65fr 1.15fr auto; gap:34px; align-items:start; }
 .footer-brand { display:flex; gap:12px; align-items:center; }
 .footer-brand img { width:46px; filter: drop-shadow(0 8px 18px rgba(0,0,0,.2)); }
 .footer-brand strong { color:white; font-family:Montserrat,sans-serif; }
-.footer-brand p, .footer-disclaimer { margin:0; font-size:.9rem; }
+.footer-brand p, .footer-disclaimer, .footer-links { margin:0; font-size:.9rem; }
+.footer-links a { color:white; font-weight:900; text-decoration-color:rgba(232,155,49,.7); text-underline-offset:5px; white-space:nowrap; }
 
 @media (max-width: 920px) {
   .nav-wrap { min-height:auto; padding:14px 0; }
