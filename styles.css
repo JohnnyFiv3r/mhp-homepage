@@ -101,10 +101,6 @@ h2 { font-size: clamp(2rem, 4vw, 3.45rem); letter-spacing:-.045em; }
 h3 { font-size: 1.18rem; letter-spacing:-.02em; }
 .hero-text { margin: 24px 0 0; max-width: 680px; color:#314456; font-size: clamp(1.1rem, 2vw, 1.32rem); }
 .hero-actions { display:flex; gap: 14px; flex-wrap:wrap; margin: 28px 0 16px; }
-.proof-row { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0; }
-.proof-row span { display:inline-flex; align-items:center; min-height:34px; padding:.35rem .7rem; border-radius:999px; background:rgba(255,253,248,.72); border:1px solid var(--line); color:var(--navy); font-size:.88rem; font-weight:800; }
-.micro-disclosure { max-width: 740px; color: var(--slate); font-size: .9rem; }
-
 .request-card, .promise-card, .signup-card, .grading-tile, .future-card, .step {
   border: 1px solid var(--line);
   background: rgba(255, 253, 248, 0.84);
