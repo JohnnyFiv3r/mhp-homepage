@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://johnnyfiv3r.github.io/mhp-homepage/sitemap.xml
