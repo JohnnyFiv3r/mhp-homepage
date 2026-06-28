@@ -70,3 +70,7 @@ Build the secure endpoint/adapter skeleton:
 4. Create/update Twenty `Person`, `Property`, `ConsentEvent`, and `ServiceRequest` using an idempotency key.
 5. If consent is granted and 10DLC is approved, send `homeowner_request_received_v1` through Telnyx.
 6. Ledger all events and failures.
+
+## Telnyx callable communications app
+
+Telnyx is the assistant-callable SMS/voice application layer, not just a template notification pipe. See `telnyx-callable-app.md` and `../twenty-adapter/docs/telnyx-connector-interface.md`.

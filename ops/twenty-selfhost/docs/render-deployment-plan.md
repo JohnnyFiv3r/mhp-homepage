@@ -15,7 +15,7 @@ Preferred Render layout:
 | Postgres | Render Postgres | private |
 | Redis/queue | Render Key Value | private |
 | MHP adapter/API | Web Service, Node | `api.murfreesborohomepros.com` |
-| SMS service connector | Same adapter service initially; split later if needed | callable internal module + public Telnyx webhook paths |
+| SMS service connector | Same adapter service initially; split later if needed | assistant-callable internal module + public Telnyx webhook paths |
 | Static marketing site | GitHub Pages by default; Render Static Site acceptable | `murfreesborohomepros.com` / `www.murfreesborohomepros.com` |
 | Upload/storage if needed | Render disk or external S3-compatible storage | private |
 
@@ -77,9 +77,9 @@ Render may host all MVP public/server surfaces:
 1. **Static site** — public SEO/landing pages. GitHub Pages remains cheaper/free; Render Static Site is fine if one dashboard is operationally easier.
 2. **CRM dashboard** — Twenty UI and Twenty API at `crm.*`.
 3. **API adapter** — form intake, Twenty webhooks, idempotency ledger, validation, and future auth gates at `api.*`.
-4. **SMS connector** — callable Telnyx send/receive logic. Keep it inside the adapter at first; split into a separate service only if queueing/scale/security requires it.
+4. **SMS connector** — assistant-callable Telnyx send/receive logic for customer/provider conversations. Keep it inside the adapter at first; split into a separate service only if queueing/scale/security requires it.
 
-Do not let the static frontend call Telnyx or Twenty directly. It should call only the adapter/intake endpoint.
+Do not let the static frontend call Telnyx or Twenty directly. It should call only the adapter/intake endpoint. Assistant/customer SMS must go through the connector so consent, approval gates, idempotency, and Twenty Communication logs are enforced.
 
 ## Backup posture
 
