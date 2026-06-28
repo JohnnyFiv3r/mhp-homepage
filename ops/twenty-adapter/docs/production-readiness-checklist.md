@@ -4,8 +4,9 @@ Use this before connecting live forms or Telnyx production traffic.
 
 ## Twenty workspace
 
-- [ ] Choose Cloud Pro unless self-hosting is already operationally routine.
-- [ ] Create production workspace and a separate sandbox workspace if available.
+- [ ] Provision self-hosted Twenty using `ops/twenty-selfhost/docs/install-runbook.md`.
+- [ ] Confirm HTTPS URL, persistent volumes, backed-up `ENCRYPTION_KEY`, and daily DB backup.
+- [ ] Create production workspace/admin user and a separate sandbox instance/workspace if available.
 - [ ] Configure least-privilege roles for founder, operator, adapter/API key, and read-only reporting.
 - [ ] Create a scoped API key under Settings → API & Webhooks.
 - [ ] Store API key in the deployment secret store only; never in GitHub Pages or repo files.

@@ -1,0 +1,7 @@
+# Copy to /opt/mhp/twenty/Caddyfile or your reverse proxy host.
+# Assumes Twenty listens on localhost:3000.
+
+crm.murfreesborohomepros.com {
+  encode zstd gzip
+  reverse_proxy 127.0.0.1:3000
+}

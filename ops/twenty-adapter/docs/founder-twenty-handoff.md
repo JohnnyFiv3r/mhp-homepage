@@ -4,12 +4,12 @@ While Telnyx/10DLC is being handled, the Twenty side needs these founder/admin a
 
 ## Recommended hosting choice
 
-Use **Twenty Cloud Pro** for launch unless self-hosting is already operationally routine. The business plan also recommends Cloud for speed.
+Use **self-hosted Twenty** for launch. Twenty Cloud is fallback only if self-hosting materially slows validation or reliability becomes a distraction.
 
 ## Create in Twenty
 
-1. Production workspace.
-2. Optional sandbox workspace for native MCP experiments.
+1. Production self-hosted instance at `https://crm.murfreesborohomepros.com`.
+2. Optional sandbox instance/workspace for native MCP experiments.
 3. API key for the MHP adapter, scoped to the minimum role needed for:
    - Person
    - Company

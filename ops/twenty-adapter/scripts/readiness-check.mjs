@@ -10,7 +10,10 @@ const required = [
   'ops/crm-sms/webhook-contract.json',
   'ops/crm-sms/sms-templates.md',
   'ops/twenty-adapter/src/server.mjs',
-  'ops/twenty-adapter/docs/production-readiness-checklist.md'
+  'ops/twenty-adapter/docs/production-readiness-checklist.md',
+  'ops/twenty-selfhost/README.md',
+  'ops/twenty-selfhost/docs/install-runbook.md',
+  'ops/twenty-selfhost/scripts/backup-postgres.sh'
 ];
 let failed = false;
 for (const file of required) {
