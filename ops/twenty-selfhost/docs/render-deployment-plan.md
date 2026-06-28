@@ -14,7 +14,9 @@ Preferred Render layout:
 | Twenty worker | Background Worker or Private Service | private |
 | Postgres | Render Postgres | private |
 | Redis/queue | Render Key Value | private |
-| MHP adapter | Web Service, Node | `api.murfreesborohomepros.com` |
+| MHP adapter/API | Web Service, Node | `api.murfreesborohomepros.com` |
+| SMS service connector | Same adapter service initially; split later if needed | callable internal module + public Telnyx webhook paths |
+| Static marketing site | GitHub Pages by default; Render Static Site acceptable | `murfreesborohomepros.com` / `www.murfreesborohomepros.com` |
 | Upload/storage if needed | Render disk or external S3-compatible storage | private |
 
 ## Why this split
@@ -23,15 +25,19 @@ Preferred Render layout:
 - Render filesystems are ephemeral unless a paid persistent disk is attached.
 - Render provides managed Postgres and Key Value; use those instead of running database containers in the app service.
 - The adapter should remain a separate public surface from the CRM dashboard.
+- The SMS connector should start inside the adapter so intake, consent, Telnyx callbacks, and Twenty status updates share one audit/idempotency layer.
+- The static site can stay on GitHub Pages for free, but Render Static Site is acceptable if we want one platform for MVP operations.
 
 ## Domains
 
+- `murfreesborohomepros.com` / `www.murfreesborohomepros.com` → public static marketing site, on GitHub Pages or Render Static Site
 - `crm.murfreesborohomepros.com` → Twenty dashboard/API
-- `api.murfreesborohomepros.com` → MHP adapter endpoints:
+- `api.murfreesborohomepros.com` → MHP adapter and callable SMS connector endpoints:
   - `/health`
   - `/intake`
   - `/twenty/webhook`
-  - later Telnyx webhook endpoints
+  - `/sms/send` or equivalent internal callable action, protected from public browser use
+  - later Telnyx webhook endpoints such as `/telnyx/webhook`
 
 ## Render setup sequence
 
@@ -59,7 +65,21 @@ Preferred Render layout:
     - `MHP_DRY_RUN=false` only after sandbox tests pass
 12. Attach custom domain `api.murfreesborohomepros.com`.
 13. Add Twenty webhook to `https://api.murfreesborohomepros.com/twenty/webhook`.
-14. Run dry-run then live sandbox intake test.
+14. Add SMS connector routes to the adapter, still dry-run until Telnyx/10DLC is approved.
+15. Optional: create Render Static Site for the marketing site, or keep GitHub Pages and only point the apex/www domain when ready.
+16. Run dry-run then live sandbox intake test.
+
+
+## MVP Render service boundary
+
+Render may host all MVP public/server surfaces:
+
+1. **Static site** — public SEO/landing pages. GitHub Pages remains cheaper/free; Render Static Site is fine if one dashboard is operationally easier.
+2. **CRM dashboard** — Twenty UI and Twenty API at `crm.*`.
+3. **API adapter** — form intake, Twenty webhooks, idempotency ledger, validation, and future auth gates at `api.*`.
+4. **SMS connector** — callable Telnyx send/receive logic. Keep it inside the adapter at first; split into a separate service only if queueing/scale/security requires it.
+
+Do not let the static frontend call Telnyx or Twenty directly. It should call only the adapter/intake endpoint.
 
 ## Backup posture
 
