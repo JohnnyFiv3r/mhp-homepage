@@ -15,3 +15,4 @@ InvoiceCredit,custom,Commercial operations,"billing_period, amount, status, disp
 ContentAsset,custom,Website and social content,"url, target_intent, evidence_sources, review_status, performance"
 SEOExperiment,custom,Measured SEO change,"hypothesis, page, change, start_end, guardrail, result, confidence"
 Incident,custom,Compliance consumer security or partner issue,"severity, owner, containment, root_cause, remediation"
+InboxItem,custom,Actionable inbound/outbound triage queue,"source_channel, status, intent, priority, links, suggested_reply, escalation"

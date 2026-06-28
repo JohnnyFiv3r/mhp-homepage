@@ -1,0 +1,24 @@
+object,field_key,label,type,required,notes
+InboxItem,inbox_item_id,Inbox item ID,text,yes,Stable id for triage item
+InboxItem,source_channel,Source channel,single_select,yes,sms|voice|email|form|internal
+InboxItem,provider,Provider,single_select,yes,telnyx|twenty|website|manual
+InboxItem,external_message_id,External message ID,text,no,Telnyx message/call id or source id
+InboxItem,direction,Direction,single_select,yes,inbound|outbound|internal
+InboxItem,status,Status,single_select,yes,new|classified|needs_assistant_reply|needs_owner_review|waiting_on_customer|waiting_on_provider|auto_resolved|closed|suppressed
+InboxItem,intent,Intent,single_select,yes,stop_opt_out|help_request|new_intake_detail|missing_info_response|status_question|timing_change|provider_accept|provider_reject|provider_question|complaint|safety_or_emergency|billing_or_money|insurance_or_legal|unknown
+InboxItem,priority,Priority,single_select,yes,p0_suppress_now|p1_owner_now|p2_assistant_now|p3_normal|p4_low
+InboxItem,person_id,Person,relation,no,Linked homeowner/provider contact
+InboxItem,service_request_id,ServiceRequest,relation,no,Linked service request
+InboxItem,company_id,Company,relation,no,Linked provider company
+InboxItem,routing_attempt_id,RoutingAttempt,relation,no,Linked routing attempt if provider response
+InboxItem,communication_id,Communication,relation,no,Linked raw communication record
+InboxItem,raw_body,Raw body,long_text,yes,Original inbound content
+InboxItem,normalized_summary,Normalized summary,long_text,no,Assistant/system summary
+InboxItem,suggested_reply,Suggested reply,long_text,no,Draft assistant reply before send/approval
+InboxItem,requires_owner_approval,Requires owner approval,boolean,yes,True for escalated/risky categories
+InboxItem,escalation_reason,Escalation reason,text,no,Why owner is required
+InboxItem,assigned_to,Assigned to,text,no,owner|assistant|system
+InboxItem,due_at,Due at,datetime,no,SLA or follow-up due time
+InboxItem,resolved_at,Resolved at,datetime,no,Closed/suppressed timestamp
+InboxItem,idempotency_key,Idempotency key,text,yes,Prevents duplicate items from webhook replay
+InboxItem,created_at_source,Created at source,datetime,yes,Timestamp from provider/source when available

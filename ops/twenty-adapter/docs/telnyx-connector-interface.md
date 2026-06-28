@@ -62,3 +62,7 @@ STOP and reasonable opt-out language must update Twenty immediately before any a
 ## Assistant behavior
 
 The assistant can chat with customers directly through this connector once production approval gates are enabled. It should prefer concise, useful messages and should escalate rather than improvise when a message affects safety, money, legal/insurance, warranties, provider disputes, or MHP reputation.
+
+## Inbox integration
+
+Inbound Telnyx messages should create/update a Twenty `Communication` record and an actionable `InboxItem`. The assistant works from InboxItems, not raw transcripts. See `../../crm-sms/inbound-triage.md` and `../../../data/crm/inbox-fields.csv`.

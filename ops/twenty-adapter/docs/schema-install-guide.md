@@ -7,8 +7,9 @@ Twenty APIs are generated from workspace schema, so install order matters.
 1. Built-ins: Person, Company
 2. Core request objects: Property, ConsentEvent, ServiceRequest
 3. Routing/communications: RoutingAttempt, Appointment, Communication, JobOutcome
-4. Partner/compliance/commercial: PartnerDeal, PartnerTerritory, ComplianceDocument, InvoiceCredit
-5. Content/ops: ContentAsset, SEOExperiment, Incident
+4. Communications/triage: InboxItem
+5. Partner/compliance/commercial: PartnerDeal, PartnerTerritory, ComplianceDocument, InvoiceCredit
+6. Content/ops: ContentAsset, SEOExperiment, Incident
 
 ## Minimum relations
 
@@ -31,3 +32,13 @@ Create a ServiceRequest from `fixtures/intake.sample.json` through the adapter. 
 - a ConsentEvent with `sms_consent_web_v1` language version;
 - a ServiceRequest with status `new` and urgency `urgent_24h`;
 - an adapter ledger event with the same idempotency key.
+
+## Inbox / triage relations
+
+- InboxItem → Person: sender/contact
+- InboxItem → ServiceRequest: linked customer request
+- InboxItem → Company: linked provider when provider-side
+- InboxItem → RoutingAttempt: linked provider dispatch when relevant
+- InboxItem → Communication: raw message/call record
+
+Create InboxItem after Communication so raw message history and actionable triage can stay separate.

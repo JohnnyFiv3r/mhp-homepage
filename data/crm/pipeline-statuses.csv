@@ -36,3 +36,12 @@ Incident,severity,sev1,SEV1,Critical compliance/security/consumer harm risk
 Incident,severity,sev2,SEV2,Major issue requiring urgent review
 Incident,severity,sev3,SEV3,Moderate issue for tracked remediation
 Incident,severity,sev4,SEV4,Minor issue or improvement item
+InboxItem,status,new,New,New inbound item not reviewed/classified
+InboxItem,status,classified,Classified,Intent and priority identified
+InboxItem,status,needs_assistant_reply,Needs assistant reply,Assistant should draft/send if allowed
+InboxItem,status,needs_owner_review,Needs owner review,Owner approval/intervention required
+InboxItem,status,waiting_on_customer,Waiting on customer,Customer response/action pending
+InboxItem,status,waiting_on_provider,Waiting on provider,Provider response/action pending
+InboxItem,status,auto_resolved,Auto resolved,Template/system action handled item
+InboxItem,status,closed,Closed,No further action needed
+InboxItem,status,suppressed,Suppressed,STOP/do-not-contact or invalid item

@@ -6,6 +6,7 @@ const required = [
   'data/crm/twenty-objects.csv',
   'data/crm/lead-fields.csv',
   'data/crm/provider-fields.csv',
+  'data/crm/inbox-fields.csv',
   'data/crm/pipeline-statuses.csv',
   'ops/crm-sms/webhook-contract.json',
   'ops/crm-sms/sms-templates.md',
@@ -22,7 +23,7 @@ for (const file of required) {
   if (!exists) failed = true;
 }
 const objects = fs.readFileSync(path.join(root, 'data/crm/twenty-objects.csv'), 'utf8');
-for (const name of ['ServiceRequest','ConsentEvent','RoutingAttempt','Communication','Incident']) {
+for (const name of ['ServiceRequest','ConsentEvent','RoutingAttempt','Communication','Incident','InboxItem']) {
   const ok = objects.includes(name);
   console.log(ok ? 'OK' : 'MISSING', `Twenty object ${name}`);
   if (!ok) failed = true;
